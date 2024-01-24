@@ -1,0 +1,116 @@
+:root {
+  --sl-color-primary-50: rgb(253 248 255);
+  --sl-color-primary-100: rgb(248 230 254);
+  --sl-color-primary-200: rgb(243 211 252);
+  --sl-color-primary-300: rgb(238 190 251);
+  --sl-color-primary-400: rgb(230 161 249);
+  --sl-color-primary-500: rgb(219 119 247);
+  --sl-color-primary-600: rgb(204 64 244);
+  --sl-color-primary-700: rgb(177 14 223);
+  --sl-color-primary-800: rgb(147 12 186);
+  --sl-color-primary-900: rgb(106 8 134);
+  --sl-color-primary-950: rgb(68 5 86);
+
+  --sl-font-sans: 'Source Sans 3', sans-serif;
+  --sl-font-mono: 'Source Code Pro', sans-serif;
+}
+
+* {
+  font-family: var(--sl-font-sans);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
+}
+
+#app {
+  max-height: 100vh;
+  height: 100%;
+  padding: 3vh 4vw;
+  display: grid;
+  column-gap: 4vw;
+  row-gap: 4vh;
+  grid-template-columns: 0.4fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 100px 200px 400px;
+  align-items: start;
+}
+
+#play-button {
+  align-self: center;
+  justify-self: center;
+  grid-column: 1;
+  font-size: 2em;
+}
+
+#gain-slider {
+  grid-column: 2;
+}
+
+#select-wave {
+  grid-column: 3;
+}
+
+#formula-textarea {
+  grid-column: 4 / 6;
+}
+
+#time-domain-chart {
+  grid-column: 1 / 6;
+  grid-row: 2;
+  max-height: 200px;
+}
+
+#freq-sliders-container {
+  grid-column: 1 / 6;
+  grid-row: 3;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(32, 1fr);
+  grid-auto-flow: column;
+  row-gap: 24vh;
+  column-gap: 1.5vw;
+  margin-top: 20vh;
+}
+
+#freq-sliders-container div {
+  transform: rotate(270deg);
+  width: 1vw;
+}
+
+#freq-sliders-container sl-range {
+  width: 12vw;
+}
+
+sl-range::part(tooltip) {
+  font-family: var(--sl-font-mono);
+}
+
+#freq-sliders-container sl-range::part(tooltip) {
+  font-size: var(--sl-font-size-x-small);
+  transform: rotate(90deg);
+}
+
+#mobile-message {
+  top: 10%;
+  text-align: center;
+  position: absolute;
+  display: none;
+}
+
+@media only screen and (max-width: 800px) {
+  #app * {
+    display: none;
+    width: 100%;
+  }
+
+  #time-domain-chart {
+    visibility: hidden;
+  }
+
+  #mobile-message {
+    display: unset;
+  }
+}
